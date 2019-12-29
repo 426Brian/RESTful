@@ -1,0 +1,39 @@
+spring:
+  datasource:
+    username: demo_01
+    password: demo1007
+    url: jdbc:oracle:thin:@192.168.1.102:1522:testDB0113
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    #    用阿里的druid 数据源
+    type: com.alibaba.druid.pool.DruidDataSource
+    filters: stat
+    initialSize: 5
+    maxactive: 20
+    maxWait: 60000
+    minIdle: 5
+    timeBetweenEvictionRunsMillis: 3000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 1 from dual
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+  #  日期格式
+  jackson:
+    date-format: yyyy-MM-dd
+    time-zone: GMT+8timestamp
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
+
+
+mybatis:
+  #  entity 位置
+  type-aliases-package: classpath:com/restful/restfuldemo/entity
+  #  mybatis 配置文件位置
+  config-location: classpath:mybatis/conf/mybatis-conf.xml
+  #  xxmapper.xml 文件位置
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  
+  configuraton-properties:
+    map-underscore-to-camel-case: true
